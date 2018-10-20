@@ -12,6 +12,7 @@ using Microsoft.EntityFrameworkCore;
 using PostgreSqlWithNetcoreWebApp.Data;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using PostgreSqlWithNetcoreWebApp.Models;
 
 namespace PostgreSqlWithNetcoreWebApp
 {
@@ -43,6 +44,9 @@ namespace PostgreSqlWithNetcoreWebApp
                 Configuration.GetConnectionString("NpgsqlCOnnection")));
          services.AddDefaultIdentity<IdentityUser>()
              .AddEntityFrameworkStores<ApplicationDbContext>();
+
+            services.AddDbContext<PostgreSqlWithNetcoreWebAppContext>(options =>
+                    options.UseNpgsql(Configuration.GetConnectionString("PostgreSqlWithNetcoreWebAppContext")));
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
