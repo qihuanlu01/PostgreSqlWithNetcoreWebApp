@@ -38,11 +38,11 @@ namespace PostgreSqlWithNetcoreWebApp
             /****************************************************
              * options.UseSqlServer(
                  Configuration.GetConnectionString("DefaultConnection")));
-         services.AddDefaultIdentity<IdentityUser>()
-             .AddEntityFrameworkStores<ApplicationDbContext>();
          *****************************************************/
             options.UseNpgsql(
                 Configuration.GetConnectionString("NpgsqlCOnnection")));
+         services.AddDefaultIdentity<IdentityUser>()
+             .AddEntityFrameworkStores<ApplicationDbContext>();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
